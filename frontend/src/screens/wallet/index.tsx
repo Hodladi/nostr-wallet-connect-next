@@ -95,7 +95,7 @@ function Wallet() {
               <CardContent className="text-right">
                 <Button variant="outline">
                   Install Alby Extension
-                  <ExternalLink className="w-4 h-4 ml-2" />
+                  <ExternalLinkIcon className="w-4 h-4 ml-2" />
                 </Button>
               </CardContent>
             </Card>
