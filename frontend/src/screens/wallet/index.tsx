@@ -1,8 +1,9 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLinkIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import AlbyHead from "src/assets/images/alby-head.svg";
 import AppHeader from "src/components/AppHeader";
 import BreezRedeem from "src/components/BreezRedeem";
+import ExternalLink from "src/components/ExternalLink";
 import Loading from "src/components/Loading";
 import { Button } from "src/components/ui/button";
 import {
@@ -12,6 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "src/components/ui/card";
+import { Checkbox } from "src/components/ui/checkbox";
 import { useBalances } from "src/hooks/useBalances";
 import { useInfo } from "src/hooks/useInfo";
 
@@ -63,7 +65,7 @@ function Wallet() {
             <CardContent className="text-right">
               <Button variant="outline">
                 Open Alby Web
-                <ExternalLink className="w-4 h-4 ml-2" />
+                <ExternalLinkIcon className="w-4 h-4 ml-2" />
               </Button>
             </CardContent>
           </Card>
@@ -101,8 +103,69 @@ function Wallet() {
         )}
       </div>
 
+      <Card>
+        <CardHeader>
+          <CardTitle>Get started with your Alby Hub</CardTitle>
+          <CardDescription>Some first steps to get you started</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3">
+          <CheckboxItem
+            id="open-channel"
+            text="Open your first channel"
+            checked={true}
+          />
+          <CheckboxItem
+            id="link-alby"
+            text="Link your Alby Account"
+            checked={true}
+          />
+          <CheckboxItem
+            id="create-app"
+            text="Create your first app connection"
+            checked={false}
+          />
+          <CheckboxItem
+            id="backup-keys"
+            text="Backup your keys"
+            checked={false}
+          />
+          <CheckboxItem
+            id="make-payment"
+            text="Make first payment"
+            checked={false}
+          />
+          <CheckboxItem
+            id="help-friend"
+            text="Help a friend to get on lightning"
+            checked={false}
+          />
+        </CardContent>
+      </Card>
+
       <BreezRedeem />
     </>
+  );
+}
+
+function CheckboxItem({
+  id,
+  text,
+  checked,
+}: {
+  id: string;
+  text: string;
+  checked: boolean;
+}) {
+  return (
+    <div className="flex items-center gap-2">
+      <Checkbox id={id} checked={checked} />
+      <label
+        htmlFor={id}
+        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        {text}
+      </label>
+    </div>
   );
 }
 
